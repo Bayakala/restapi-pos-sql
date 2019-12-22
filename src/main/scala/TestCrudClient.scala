@@ -33,6 +33,16 @@ case class Item(dpt: String, name: String)
 case class PayMethod(acct: String, name: String)
 
 object TestCrudClient extends JsFormats2 with JsonConverter {
+
+
+  // Base64 encode
+  val text = "This is plaintext."
+  val bytesEncoded = java.util.Base64.getEncoder.encode(text.getBytes())
+
+  // Base64 decode
+  val textDecoded = new String(java.util.Base64.getDecoder.decode(bytesEncoded))
+  println(textDecoded)
+  
   case class A(code: String, name: String)
   class Person(code: String, name: Option[String], age: Int, male: Boolean
               ,dofb: java.time.LocalDate, pic: Option[InputStream])
